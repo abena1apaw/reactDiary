@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
  
 class Form extends Component {
-    //create refs
+    //create references
     authorRef = React.createRef();
     titleRef = React.createRef();
     contentRef = React.createRef();

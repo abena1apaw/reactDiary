@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const cors = require("cors");
 const users = require("./routes/api/users");
-const Diarys = require("./routes/api/Diarys");
+const Diarys = require("./routes/api/diarys");
 const app = express();
 const DiaryRoutes = express.Router();
 
