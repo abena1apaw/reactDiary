@@ -19,4 +19,4 @@ const DiarySchema = new Schema({
     default: Date.now
   }
 });
-module.exports = Diary = mongoose.model("Diarys", DiarySchema);
+module.exports = Diary = mongoose.model("diarys", DiarySchema);
