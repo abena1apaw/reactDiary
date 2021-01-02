@@ -18,7 +18,7 @@ class SinglePost extends Component {
                 <Paper className="single_post"> 
                     <h4>Title: {title}</h4>
                     <Divider light />
-                    <p><b>Autor:</b> {author}</p>
+                    <p><b>Author:</b> {author}</p>
                     <Divider light />
                     <p><b>Content:</b> {body}</p>
                     <Divider light />
