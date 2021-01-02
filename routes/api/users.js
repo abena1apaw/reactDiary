@@ -7,7 +7,7 @@ const keys = require("../../config/keys");
 
 const validateRegisterData = require("../../validation/register");
 const validateLoginData = require("../../validation/login");
-// Load User model
+// Load user data
 const User = require("../../models/User");
 
 
@@ -15,7 +15,7 @@ router.post("/register", (req, res) => {
    
     
   const { errors, isValid } = validateRegisterData(req.body);
-  // Check validation
+  // validate users
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -44,15 +44,15 @@ router.post("/register", (req, res) => {
     });
   });
   router.post("/login", (req, res) => {
-    // Form validation
+    // validate forms
   const { errors, isValid } = validateLoginData(req.body);
-  // Check validation
+  // check validation
     if (!isValid) {
       return res.status(400).json(errors);
     }
   const email = req.body.email;
     const password = req.body.password;
-  // Find user by email
+  // Locate user by email
     User.findOne({ email }).then(user => {
       
         
@@ -63,7 +63,7 @@ router.post("/register", (req, res) => {
         
       bcrypt.compare(password, user.password).then(isMatch => {
         if (isMatch) {
-          // User matched
+          // Users matched by information
           // Create JWT Payload
           const payload = {
             id: user.id,

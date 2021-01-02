@@ -11,7 +11,7 @@ module.exports = function validateRegisterData(data) {
   if (Validator.isEmpty(data.name)) {
     errors.name = "Please enter your name";
   }
-// validatee email
+// validate email
   if (Validator.isEmpty(data.email)) {
     errors.email = "Please enter your email";
   } else if (!Validator.isEmail(data.email)) {
