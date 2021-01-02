@@ -57,7 +57,7 @@ router.post("/register", (req, res) => {
       
         
       if (!user) {
-        return res.status(404).json({ emailnotfound: "Email not found" });
+        return res.status(404).json({ emailnotfound: "Email not in database" });
       }
 
         
