@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const cors = require("cors");
 const users = require("./routes/api/users");
-const Diarys = require("./routes/api/diarys");
+const diarys = require("./routes/api/diarys");
 const app = express();
-const DiaryRoutes = express.Router();
+const diaryRoutes = express.Router();
 
 app.use(cors());
 app.use(
@@ -27,46 +27,46 @@ mongoose
   .catch(err => console.log(err));
 
 
-   DiaryRoutes.route("/").get(function (req, res) {
-  Diary.find(function (err, Diarys) {
+   diaryRoutes.route("/").get(function (req, res) {
+  Diary.find(function (err, diarys) {
   if (err) {
   console.log(err);
       } else {
-  res.json(Diarys);
+  res.json(diarys);
       }
     });
   });
    
-  DiaryRoutes.route("/:id").get(function (req, res) {
+  diaryRoutes.route("/:id").get(function (req, res) {
   let id = req.params.id;
-  Diary.findById(id, function (err, Diary) {
-  res.json(Diary);
+  Diary.findById(id, function (err, diary) {
+  res.json(diary);
     });
   });
    
-  DiaryRoutes.route("/add").post(function (req, res) {
-  let Diary = new Diary(req.body);
-  Diary
+  diaryRoutes.route("/add").post(function (req, res) {
+  let diary = new Diary(req.body);
+  diary
       .save()
-      .then((Diary) => {
-  res.status(200).json({ Diary:"Diary added successfully" });
+      .then((diary) => {
+  res.status(200).json({ diary:"Diary added successfully" });
       })
       .catch((err) => {
   res.status(400).send("adding new Diary failed");
       });
   });
    
-  DiaryRoutes.route("/update/:id").post(function (req, res) {
-  Diary.findById(req.params.id, function (err, Diary) {
-  if (!Diary) res.status(404).send("data is not found");
-  else Diary.Diary_title = req.body.Diary_title;
-  Diary.Diary_author = req.body.Diary_author;
-  Diary.Diary_content = req.body.Diary_content;
-  Diary.Diary_category = req.body.Diary_category;
+  diaryRoutes.route("/update/:id").post(function (req, res) {
+  Diary.findById(req.params.id, function (err, diary) {
+  if (!diary) res.status(404).send("data is not found");
+  else diary.Diary_title = req.body.diary_title;
+  diary.diary_author = req.body.diary_author;
+  diary.diary_content = req.body.diary_content;
+  diary.diary_category = req.body.diary_category;
    
-  Diary
+  diary
         .save()
-        .then((Diary) => {
+        .then((diary) => {
          res.json("Diary updated");
         })
         .catch((err) => {
@@ -82,6 +82,6 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
-app.use("/api/Diarys", Diarys);
+app.use("/api/diarys", diarys);
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));

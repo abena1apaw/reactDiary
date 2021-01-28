@@ -8,7 +8,7 @@ const keys = require("../../config/keys");
 
 const Diary = require("../../models/Diary");
 
-router.post("/Diary", (req, res) => {
+router.post("/diary", (req, res) => {
          const newDiary = new Diary({
           title: req.body.title,
           author: req.body.author,
@@ -28,10 +28,10 @@ router.post("/Diary", (req, res) => {
      })
     })
 
-    router.get("/Diary/:id", (req, res) => {
+    router.get("/diary/:id", (req, res) => {
      
              
-      Diary.findOne({ _id: req.params.id })
+      diary.findOne({ _id: req.params.id })
           .then(function(dbDiary) {
               res.json(dbDiary);
           })

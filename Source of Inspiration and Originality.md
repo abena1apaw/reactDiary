@@ -1,6 +1,6 @@
 Source of Documentation
 
-I used the code ofr basic MERN blog. However, I changed the blog to a dairy with login and user
+I used the code for basic MERN blog. However, I changed the blog to a dairy with login and user
  registration database.
 I entered closed the route for the Diary into the login/auth app in the dashboard.js
 

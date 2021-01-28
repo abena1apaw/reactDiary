@@ -6,8 +6,8 @@ Server is in the config folder and runs on localhost:5000.
 The client log in runs on localhost:3000 and  the Diary runs on localhost:3001.
 The application has three ports.
  
-The Diary is a react Diary.  It has posts with three settings, show, edit, and delete.
+The Diary is a react Diary.  It has posts with two settings, show and edit.
 The database is MongoDB. The middle layer is node js. The presentation layer is html and css. The app is react js.
 
-The application is used for self-expression, idea sharing, and advertising.
+The application is used for self-expression, idea sharing, and relationship building.
 
