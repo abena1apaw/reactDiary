@@ -1,25 +1,25 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const cors = require("cors");
-const users = require("./routes/api/users");
-const diarys = require("./routes/api/diarys");
+import express, { Router } from "express";
+import { connect } from "mongoose";
+import pkg from 'body-parser';
+const { urlencoded, json } = pkg;
+import passport, { initialize } from "passport";
+import cors from "cors";
+import users from "./routes/api/users.js";
+import diarys from "./routes/api/diarys.js";
 const app = express();
-const diaryRoutes = express.Router();
+const diaryRoutes = Router();
 
 app.use(cors());
 app.use(
-  bodyParser.urlencoded({
+  urlencoded({
     extended: false
   })
 );
-app.use(bodyParser.json());
+app.use(json());
 // DB Config
-const db = require("./config/keys").mongoURI;
+import { mongoURI as db } from "./config/keys.js";
 // Connect to MongoDB
-mongoose
-  .connect(
+connect(
     db,
     { useNewUrlParser: true }
   )
@@ -77,7 +77,7 @@ mongoose
   
   
 // Passport middleware
-app.use(passport.initialize());
+app.use(initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes

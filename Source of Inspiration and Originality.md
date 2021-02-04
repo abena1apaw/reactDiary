@@ -32,3 +32,4 @@ I modified the router by removing a div class to make the navbar broader. I also
 I added a proxy link to the package JSON to the Diary and client.
 
 I added a Diary route to the server.js to save to mongo. I added cors to the server.js
+i added a setupProxy to connect the app to Mongose Database.
